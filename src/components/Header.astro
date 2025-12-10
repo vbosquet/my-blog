@@ -52,6 +52,8 @@ import HeaderLink from "./HeaderLink.astro";
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.5em;
 	}
 	nav a {
 		padding: 1em 0.5em;
@@ -67,9 +69,35 @@ import HeaderLink from "./HeaderLink.astro";
 	.social-links a {
 		display: flex;
 	}
+
+	/* Tablettes et mobile */
 	@media (max-width: 720px) {
 		.social-links {
 			display: none;
+		}
+	}
+
+	/* Mobile (Samsung S8+ et similaires ~360px) */
+	@media (max-width: 480px) {
+		header {
+			padding: 0 0.5em;
+		}
+		nav {
+			justify-content: center;
+			gap: 0;
+		}
+		h2 {
+			width: 100%;
+			text-align: center;
+			padding: 0.5em 0;
+		}
+		.internal-links {
+			display: flex;
+			justify-content: center;
+		}
+		nav a {
+			padding: 0.75em 0.5em;
+			font-size: 0.9em;
 		}
 	}
 </style>
