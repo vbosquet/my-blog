@@ -3,7 +3,7 @@ title: 'Un matin comme les autres'
 description: "Un autre petit texte écrit lors d'un atelier d'écriture"
 pubDate: 'Dec 09 2025'
 heroImage: '../../assets/petit-dejeuner.jpg'
-tags: ["atelier", "écriture"]
+tags: ["atelier", "écriture", "gourmandise"]
 ---
 
 Je viens de claquer la porte. Enfin chez moi ! Il est 9h et je suis déjà fatiguée. Une longue journée m'attend cependant. Je soupire. J'ai froid. Je suis mouillée. Dehors il pleut. Je tremblote. Je souffle. Je dépose délicatement mon pain au chocolat et mon chocolat chaud. Ils sentent bon. Ils sont chauds. Je soupire encore, cette fois de plaisir. Ma veste enlevée, mes chaussures ôtées, je m'assieds à table, regarde ce petit-déjeuner improvisé, que je m'offre tous les jours depuis le début de la saison. Depuis l'arrivée de ce vent glacial et de cette pluie qui semble éternelle. Je regarde ma montre. Il est 9h05. Plus que dix minutes avant mon premier appel. Alors, je mords dans mon pain. Et je soupire encore. De contentement cette fois. Il est chaud, gras, fondant. Parfait. Je l'engloutis avec extase et j'en oublie l'heure. Je ne regarde pas ma montre. J'agrippe ma tasse et je bois. Longuement. Presque à m'en brûler

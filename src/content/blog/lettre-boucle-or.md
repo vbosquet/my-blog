@@ -3,7 +3,7 @@ title: 'Lettre à mes amis'
 description: "Lettre d'une petite ingénue à ses amis"
 pubDate: 'Dec 09 2025'
 heroImage: '../../assets/lettre-boucle-or.jpg'
-tags: ["atelier", "écriture"]
+tags: ["atelier", "écriture", "gourmandise"]
 ---
 
 Chère Papa Ours, chère Maman Ours, cher Enfant Ours,

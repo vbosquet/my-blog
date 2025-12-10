@@ -3,7 +3,7 @@ title: 'Une bouchée de chocolat'
 description: "Un cout texte écrit à l'occasion d'un atelier d'écriture"
 pubDate: 'Dec 09 2025'
 heroImage: '../../assets/chocolat.jpg'
-tags: ["atelier", "écriture"]
+tags: ["atelier", "écriture", "gourmandise"]
 ---
 
 Ça y est, la machine est lancée ou plutôt la fin, le début de la fin, la faim de l'autre, mon impatience à fondre, son impatience à lui à me goûter, me sucer, me croquer.
