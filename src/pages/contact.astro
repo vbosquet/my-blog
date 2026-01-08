@@ -99,7 +99,7 @@ const siteUrl = import.meta.env.SITE || '';
 					<!-- Honeypot anti-spam -->
 					<input type="text" name="_gotcha" class="hidden" />
 					<!-- Redirection après envoi -->
-					<input type="hidden" name="_next" value={`${siteUrl}/merci`} />
+					<input type="hidden" name="_next" value={`${siteUrl}/thanks`} />
 
 					<div class="form-group">
 						<label for="name">Nom</label>
@@ -122,7 +122,9 @@ const siteUrl = import.meta.env.SITE || '';
 		</main>
 		<Footer />
 		<script is:inline>
-			document.querySelector('form')?.reset();
+			window.addEventListener('pageshow', () => {
+				document.querySelector('form')?.reset();
+			});
 		</script>
 	</body>
 </html>
