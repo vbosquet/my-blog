@@ -125,6 +125,34 @@ const siteUrl = import.meta.env.SITE || '';
 			window.addEventListener('pageshow', () => {
 				document.querySelector('form')?.reset();
 			});
+
+			document.querySelector('form')?.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				const form = e.target;
+				const button = form.querySelector('button');
+				button.disabled = true;
+				button.textContent = 'Envoi en cours...';
+
+				try {
+					const response = await fetch(form.action, {
+						method: 'POST',
+						body: new FormData(form),
+						headers: { 'Accept': 'application/json' }
+					});
+
+					if (response.ok) {
+						window.location.href = '/thanks';
+					} else {
+						alert('Une erreur est survenue. Veuillez réessayer.');
+						button.disabled = false;
+						button.textContent = 'Envoyer';
+					}
+				} catch (error) {
+					alert('Une erreur est survenue. Veuillez réessayer.');
+					button.disabled = false;
+					button.textContent = 'Envoyer';
+				}
+			});
 		</script>
 	</body>
 </html>
