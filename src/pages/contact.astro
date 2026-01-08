@@ -121,10 +121,8 @@ const siteUrl = import.meta.env.SITE || '';
 			</div>
 		</main>
 		<Footer />
-		<script>
-			document.addEventListener('DOMContentLoaded', () => {
-				document.querySelector('form')?.reset();
-			});
+		<script is:inline>
+			document.querySelector('form')?.reset();
 		</script>
 	</body>
 </html>
