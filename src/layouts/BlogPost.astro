@@ -6,9 +6,11 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { showComments?: boolean };
 
-const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags, showComments = true } = Astro.props;
+const cusdisAppId = import.meta.env.PUBLIC_CUSDIS_APP_ID;
+const pageId = Astro.url.pathname;
 ---
 
 <html lang="en">
@@ -71,6 +73,25 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 				background: var(--accent);
 				color: white;
 			}
+			.comments-section {
+				margin-top: 3em;
+				padding-top: 2em;
+				border-top: 1px solid rgb(var(--gray-light));
+			}
+			.comments-section h2 {
+				font-size: 1.563em;
+				margin-bottom: 1em;
+				color: rgb(var(--black));
+			}
+			#cusdis_thread {
+				border: 1px solid rgb(var(--gray-light));
+				border-radius: 8px;
+				padding: 1em;
+				background: #fff;
+			}
+			#cusdis_thread iframe {
+				width: 100%;
+			}
 		</style>
 	</head>
 
@@ -104,6 +125,72 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 						<hr />
 					</div>
 					<slot />
+					{showComments && <div class="comments-section">
+					<h2>Commentaires</h2>
+					<div
+						id="cusdis_thread"
+						data-host="https://cusdis.com"
+						data-app-id={cusdisAppId}
+						data-page-id={pageId}
+						data-page-url={Astro.url.href}
+						data-page-title={title}
+						data-theme="auto"
+					></div>
+					<script is:inline src="https://cusdis.com/js/widget/lang/fr.js"></script>
+				<script is:inline>
+					window.CUSDIS_LOCALE.reply_placeholder = 'Commentaire';
+					window.CUSDIS_LOCALE.post_comment = 'Publier';
+					window.CUSDIS_LOCALE.powered_by = '';
+				</script>
+				<script is:inline src="https://cusdis.com/js/cusdis.es.js" async defer></script>
+				<script is:inline>
+					window.addEventListener('load', function () {
+						var iframe = document.querySelector("#cusdis_thread iframe");
+						if (!iframe) return;
+
+						iframe.style.border = "none";
+						iframe.scrolling = "no";
+
+						// Harmoniser le style du widget avec le site
+						var style = document.createElement('style');
+						style.textContent = '' +
+							'body { font-family: "Atkinson", sans-serif; }' +
+							'input, textarea { ' +
+							'  font-family: "Atkinson", sans-serif;' +
+							'  border: 1px solid rgb(229, 233, 240) !important;' +
+							'  border-radius: 8px !important;' +
+							'  padding: 0.75em !important;' +
+							'  font-size: 16px !important;' +
+							'}' +
+							'input:focus, textarea:focus { ' +
+							'  outline: none !important;' +
+							'  border-color: #2337ff !important;' +
+							'  box-shadow: 0 0 0 2px rgba(35, 55, 255, 0.2) !important;' +
+							'}' +
+							'button { ' +
+							'  background: #2337ff !important;' +
+							'  color: white !important;' +
+							'  border: none !important;' +
+							'  border-radius: 8px !important;' +
+							'  font-family: "Atkinson", sans-serif;' +
+							'  font-weight: 500 !important;' +
+							'  cursor: pointer !important;' +
+							'  transition: background 0.2s ease !important;' +
+							'}' +
+							'button:hover { background: #000d8a !important; }' +
+							'a[href="https://cusdis.com"] { display: none !important; }' +
+							'.text-center.text-gray-500 { display: none !important; }';
+						iframe.contentWindow.document.head.appendChild(style);
+
+						// Ajuster la hauteur dynamiquement
+						var observer = new MutationObserver(function () {
+							var h = iframe.contentWindow.document.body.scrollHeight + 20;
+							iframe.style.height = h + "px";
+						});
+						observer.observe(iframe.contentWindow.document.body, { childList: true, subtree: true });
+					});
+				</script>
+				</div>}
 				</div>
 			</article>
 		</main>
