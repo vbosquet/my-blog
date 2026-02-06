@@ -6,6 +6,7 @@ import Header from '../components/Header.astro';
 const title = "Contact";
 const description = "Envoyez-moi un message";
 const siteUrl = import.meta.env.SITE || '';
+const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT;
 ---
 
 <html lang="fr">
@@ -95,7 +96,7 @@ const siteUrl = import.meta.env.SITE || '';
 					<p>{description}</p>
 					<hr />
 				</div>
-				<form action="https://formspree.io/f/mrebnjar" method="POST">
+				<form action={formspreeEndpoint} method="POST">
 					<!-- Honeypot anti-spam -->
 					<input type="text" name="_gotcha" class="hidden" />
 					<!-- Redirection après envoi -->
